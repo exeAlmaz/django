@@ -26,7 +26,7 @@ ALLOWED_HOSTS = []
 
 SITE_ID = 1
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Application definition
 
 INSTALLED_APPS = [
