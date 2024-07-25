@@ -29,7 +29,7 @@ class StockProduct(models.Model):
     )
     quantity = models.PositiveIntegerField(default=1)
     price = models.DecimalField(
-        max_digits=18,
+        max_digits=10,
         decimal_places=2,
         validators=[MinValueValidator(0)],
     )
