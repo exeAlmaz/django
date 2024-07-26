@@ -7,14 +7,14 @@ POST {{baseUrl}}/products/?product=Огурец
 Content-Type: application/json
 
 {
-  "title": "огурцы",
-  "description": "Не самые лучшие"
+  "title": "перчики",
+  "description": "самые лучшие"
 }
 
 ###
 
 # получение продуктов
-GET {{baseUrl}}/products/
+GET {{baseUrl}}/products/?limit=4
 Content-Type: application/json
 
 ###
