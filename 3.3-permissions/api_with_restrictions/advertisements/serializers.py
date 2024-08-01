@@ -38,7 +38,16 @@ class AdvertisementSerializer(serializers.ModelSerializer):
         return super().create(validated_data)
 
     def validate(self, data):
-        """Метод для валидации. Вызывается при создании и обновлении."""
+        # """Метод для валидации. Вызывается при создании и обновлении."""
+        if self.context['request'].method == 'POST':
+            if Advertisement.objects.filter(creator_id=self.context['request'].user, status='OPEN').count() <= 9:
+                return data
+            else:
+                raise serializers.ValidationError('Не должно быть  более 10 обьявлений')
+
+        # if self.context['request'].method == "PATCH" and Advertisement.objects.filter(status='OPEN').count() >= 1:
+
+
 
         # TODO: добавьте требуемую валидацию
 
