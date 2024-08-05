@@ -14,39 +14,52 @@ Content-Type: application/json
 Authorization: Token b3e6e3c5ab3476586600d44328fbf7f5ebadd008
 
 {
-  "title": "Шкаф IKE",
-  "description": "Срочн"
+  "title": "Шкаф IKEA2czczxc",
+  "description": "Срочнqd"
 }
 
 ###
 
 # попытка поменять объявление
-PATCH {{baseUrl}}/advertisements/7/
+PATCH {{baseUrl}}/advertisements/38/
 Content-Type: application/json
 Authorization: Token b3e6e3c5ab3476586600d44328fbf7f5ebadd008
 
 {
-  "status": "CLOSED"
+  "status": "OPEN"
 }
 
 ###
 
 
 # попытка удалить объявление
-DELETE {{baseUrl}}/advertisements/6/
+DELETE {{baseUrl}}/advertisements/36/
 Content-Type: application/json
-# Authorization: Token b3e6e3c5ab3476586600d44328fbf7f5ebadd008
+Authorization: Token b3e6e3c5ab3476586600d44328fbf7f5ebadd008
 
 
 
 ###
 
 # фильтрация по создателю
-GET {{baseUrl}}/advertisements/?creator=3
+GET {{baseUrl}}/advertisements/?creator=1
 Content-Type: application/json
 
 ###
 
 # фильтрация по дате
-GET {{baseUrl}}/advertisements/?created_at_before=2020-10-01
+GET {{baseUrl}}/advertisements/?created_at_before=2000-10-01
 Content-Type: application/json
+
+
+###
+
+# # получить токен
+# POST {{baseUrl}}/advertisements/auth/token/login/
+# Content-Type: application/json
+
+# {
+#   "username": "admin",
+#   "password": "admin"
+
+# }
