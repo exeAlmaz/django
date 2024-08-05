@@ -21,19 +21,19 @@ Authorization: Token b3e6e3c5ab3476586600d44328fbf7f5ebadd008
 ###
 
 # попытка поменять объявление
-PATCH {{baseUrl}}/advertisements/38/
+PATCH {{baseUrl}}/advertisements/44/
 Content-Type: application/json
 Authorization: Token b3e6e3c5ab3476586600d44328fbf7f5ebadd008
 
 {
-  "status": "OPEN"
+  "status": "CLOSED"
 }
 
 ###
 
 
 # попытка удалить объявление
-DELETE {{baseUrl}}/advertisements/36/
+DELETE {{baseUrl}}/advertisements/53/
 Content-Type: application/json
 Authorization: Token b3e6e3c5ab3476586600d44328fbf7f5ebadd008
 
@@ -42,13 +42,13 @@ Authorization: Token b3e6e3c5ab3476586600d44328fbf7f5ebadd008
 ###
 
 # фильтрация по создателю
-GET {{baseUrl}}/advertisements/?creator=1
+GET {{baseUrl}}/advertisements/?creator=2
 Content-Type: application/json
 
 ###
 
 # фильтрация по дате
-GET {{baseUrl}}/advertisements/?created_at_before=2000-10-01
+GET {{baseUrl}}/advertisements/?created_at_before=2025-10-01
 Content-Type: application/json
 
 

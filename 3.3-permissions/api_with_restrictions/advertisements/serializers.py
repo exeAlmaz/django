@@ -33,19 +33,16 @@ class AdvertisementSerializer(serializers.ModelSerializer):
     def validate(self, data):
         """Метод для валидации. Вызывается при создании и обновлении."""
         if self.context['request'].method == 'POST':
-            if Advertisement.objects.filter(creator_id=self.context['request'].user, status='OPEN').count() <= 10:
+            if Advertisement.objects.filter(creator_id=self.context['request'].user, status='OPEN').count() <= 9:
                 return data
             else:
                 raise serializers.ValidationError('Меньше 10 открытых обьявлений')
 
-        if self.context['request'].method == 'PATCH' and Advertisement.objects.filter(status='OPEN').count() >= 9:
-            return data
-        else:
-            raise serializers.ValidationError('Меньше 10 открытых обьявлений')
-        if Advertisement.objects.get(id=self.context['request'].parser_context['kwargs']['pk']).status != data['status']\
-                and Advertisement.objects.filter(creator_id=self.context['request'].user, status='OPEN').count() <= 9:
-            return data
-        else:
-            serializers.ValidationError('Меньше 10 открытых обьявлений снова')
+        if self.context['request'].method == 'PATCH' and Advertisement.objects.filter(status='OPEN').count() >= 1:
+            if Advertisement.objects.get(id=self.context['request'].parser_context['kwargs']['pk']).status != data['status']\
+                    and Advertisement.objects.filter(creator_id=self.context['request'].user, status='OPEN').count() <= 10:
+                return data
+            else:
+               raise serializers.ValidationError('Меньше 10 открытых обьявлений снова')
 
 
