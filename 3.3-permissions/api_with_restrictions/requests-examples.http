@@ -1,65 +1,41 @@
 # примеры API-запросов
 
-@baseUrl = http://localhost:8000/api
+@baseUrl = http://127.0.0.1:8000/api/v1/
+@token = 6eb321d8d11ba5ebbd3ffd3da5ffd374b2bb7421
+# @token = f91c330ffb7d13e73433835fc9444f9815fb308f
+
+
 
 # получение объявлений
-GET {{baseUrl}}/advertisements/
+GET {{baseUrl}}articles/
 Content-Type: application/json
+# Authorization: Token {{token}}
 
 ###
 
-# создание объявления
-POST {{baseUrl}}/advertisements/
+POST {{baseUrl}}articles/
 Content-Type: application/json
-Authorization: Token b3e6e3c5ab3476586600d44328fbf7f5ebadd008
+Authorization: Token {{token}}
 
 {
-  "title": "Шкаф IKEA2czczxc",
-  "description": "Срочнqd"
-}
+  "title": "demo",
+  "tags": [1]
 
-###
 
-# попытка поменять объявление
-PATCH {{baseUrl}}/advertisements/44/
-Content-Type: application/json
-Authorization: Token b3e6e3c5ab3476586600d44328fbf7f5ebadd008
-
-{
-  "status": "CLOSED"
 }
 
 ###
 
 
-# попытка удалить объявление
-DELETE {{baseUrl}}/advertisements/53/
+PATCH {{baseUrl}}articles/1/
 Content-Type: application/json
-Authorization: Token b3e6e3c5ab3476586600d44328fbf7f5ebadd008
+Authorization: Token {{token}}
+
+{
+  "title": "demo3",
+  "tags": [1]
 
 
+}
 
 ###
-
-# фильтрация по создателю
-GET {{baseUrl}}/advertisements/?creator=2
-Content-Type: application/json
-
-###
-
-# фильтрация по дате
-GET {{baseUrl}}/advertisements/?created_at_before=2025-10-01
-Content-Type: application/json
-
-
-###
-
-# # получить токен
-# POST {{baseUrl}}/advertisements/auth/token/login/
-# Content-Type: application/json
-
-# {
-#   "username": "admin",
-#   "password": "admin"
-
-# }
